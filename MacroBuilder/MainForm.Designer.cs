@@ -32,6 +32,17 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtLog = new System.Windows.Forms.TextBox();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAppDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openAppDialog = new System.Windows.Forms.OpenFileDialog();
+            this.lblAppName = new System.Windows.Forms.Label();
+            this.lblX = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblY = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -39,7 +50,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(93, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(458, 28);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(480, 800);
             this.pictureBox1.TabIndex = 0;
@@ -50,7 +61,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(12, 27);
+            this.btnTest.Location = new System.Drawing.Point(268, 350);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 1;
@@ -72,6 +83,10 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.attachToNoxToolStripMenuItem,
+            this.newToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -81,14 +96,14 @@
             // 
             this.attachToNoxToolStripMenuItem.Name = "attachToNoxToolStripMenuItem";
             this.attachToNoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.attachToNoxToolStripMenuItem.Text = "Attach to Nox...";
+            this.attachToNoxToolStripMenuItem.Text = "A&ttach to Nox...";
             this.attachToNoxToolStripMenuItem.Click += new System.EventHandler(this.attachToNoxToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Text = "&Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // statusStrip1
@@ -116,11 +131,102 @@
             this.txtLog.Size = new System.Drawing.Size(561, 132);
             this.txtLog.TabIndex = 4;
             // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Text = "Save &As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Text = "&New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "&Open...";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveAppDialog
+            // 
+            this.saveAppDialog.DefaultExt = "noxapp";
+            this.saveAppDialog.Filter = "Nox Macro Builder Files|*.noxapp|All Files|*.*";
+            this.saveAppDialog.Title = "Save Nox Macro Builder App";
+            this.saveAppDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveAppDialog_FileOk);
+            // 
+            // openAppDialog
+            // 
+            this.openAppDialog.Filter = "Nox Macro Builder Files|*.noxapp|All Files|*.*";
+            this.openAppDialog.Title = "Open Nox Macro Builder App";
+            this.openAppDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // lblAppName
+            // 
+            this.lblAppName.AutoSize = true;
+            this.lblAppName.Location = new System.Drawing.Point(13, 28);
+            this.lblAppName.Name = "lblAppName";
+            this.lblAppName.Size = new System.Drawing.Size(60, 13);
+            this.lblAppName.TabIndex = 5;
+            this.lblAppName.Text = "App Name:";
+            // 
+            // lblX
+            // 
+            this.lblX.AutoSize = true;
+            this.lblX.Location = new System.Drawing.Point(36, 800);
+            this.lblX.Name = "lblX";
+            this.lblX.Size = new System.Drawing.Size(13, 13);
+            this.lblX.TabIndex = 6;
+            this.lblX.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 800);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "X:";
+            // 
+            // lblY
+            // 
+            this.lblY.AutoSize = true;
+            this.lblY.Location = new System.Drawing.Point(136, 800);
+            this.lblY.Name = "lblY";
+            this.lblY.Size = new System.Drawing.Size(13, 13);
+            this.lblY.TabIndex = 8;
+            this.lblY.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(113, 800);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Y:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 991);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblY);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblX);
+            this.Controls.Add(this.lblAppName);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnTest);
@@ -150,6 +256,17 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveAppDialog;
+        private System.Windows.Forms.OpenFileDialog openAppDialog;
+        private System.Windows.Forms.Label lblAppName;
+        private System.Windows.Forms.Label lblX;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblY;
+        private System.Windows.Forms.Label label3;
     }
 }
 
